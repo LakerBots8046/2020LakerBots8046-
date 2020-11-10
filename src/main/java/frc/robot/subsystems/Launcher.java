@@ -57,7 +57,7 @@ public class Launcher extends SubsystemBase {
   //Config the Velocity closed loop gains in slot 0
 
   launcherLead.config_kF(0,.029, 30);
-  launcherLead.config_kP(0,0.6 , 30);//upped from 0.05 during Granite State Event
+  launcherLead.config_kP(0,1.2 , 30);//upped from 0.05 during Granite State Event
   launcherLead.config_kI(0, 0, 30);
   launcherLead.config_kD(0, 0, 30);
   launcherLead.configClosedloopRamp(.25);
@@ -141,7 +141,7 @@ public boolean isLauncherspeed(double target){
 
 
 public boolean launcherIsAtSpeed(){
-  if (launcherLead.getClosedLoopError()> 1000) return true;
+  if (launcherLead.getClosedLoopError()< 1000) return true;
   else return false;
 
 }
