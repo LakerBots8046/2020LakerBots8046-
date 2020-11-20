@@ -103,10 +103,14 @@ public class RobotContainer {
     new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED));
     new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
     new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartCollectLastBall(intake, elevator, launcher));
+    //sample comment
+  
     
     new JoystickButton(Operatorcontroller, Button.kY.value).whenPressed(new ExtendClimber(climber));
     new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
     new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLauncher(launcher, 1));
+    new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ExtendIntakeArm(intake));
+    new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
   }
 
 

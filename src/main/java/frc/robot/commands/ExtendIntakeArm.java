@@ -14,7 +14,9 @@ public class ExtendIntakeArm extends CommandBase{
     }
 
     public void initialize(){
-        intake.extendintakearm();
+       // intake.extendintakearm(); THEN THIS
+       intake.extendintakearm();
+
         System.out.println("extending intake arm");
     }
 

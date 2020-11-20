@@ -32,16 +32,27 @@ public class Intake extends SubsystemBase { // talon control our intake
     intakeFollow = new VictorSPX(1); 
     intakeLead.configFactoryDefault();
     intakeFollow.follow(intakeLead);  // the follow follows what the lead does 
+    //intakearmDoubleSolenoid = new DoubleSolenoid(1,6,7);///DO THIS FIRST
     intakearmDoubleSolenoid = new DoubleSolenoid(1,6,7);
 
      
   }
-  public void extendintakearm(){
-    intakearmDoubleSolenoid.set(Value.kReverse);
-  }
-  public void retractintakearm(){
-    intakearmDoubleSolenoid.set(Value.kForward);
-  }
+//  public void extendintakearm(){
+//    intakearmDoubleSolenoid.set(Value.kReverse);
+//  }
+public void extendintakearm(){
+  intakearmDoubleSolenoid.set(Value.kReverse);
+}
+
+
+
+
+//  public void retractintakearm(){//AND THIS
+//    intakearmDoubleSolenoid.set(Value.kForward);
+//  }
+public void retractintakearm(){
+      intakearmDoubleSolenoid.set(Value.kForward);
+}
   public void spinMotor(double speed){
     intakeLead.set(ControlMode.PercentOutput, speed); // how fast the intake spins
   }

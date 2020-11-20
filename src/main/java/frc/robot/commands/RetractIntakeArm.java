@@ -14,7 +14,9 @@ public class RetractIntakeArm extends CommandBase{
     }
 
     public void initialize(){
+        //intake.retractintakearm(); THEN THIS
         intake.retractintakearm();
+
         System.out.println("retracting intake arm");
     }
 
