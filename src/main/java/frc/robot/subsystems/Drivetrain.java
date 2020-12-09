@@ -87,7 +87,7 @@ public void drive(double move, double rotate) {
     SmartDashboard.putNumber("rightfollowCurrent", +rightFollowCurrent());
     // This method will be called once per scheduler run
   }
-
+//hi
 
   public double getDriveDistance(){
   return leftEncoder.getPosition();
