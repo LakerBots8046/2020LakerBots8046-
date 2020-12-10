@@ -22,7 +22,8 @@ import edu.wpi.first.wpilibj.shuffleboard.*;
 public class Launcher extends SubsystemBase {
   private TalonSRX launcherLead; 
   private TalonSRX launcherFollow; 
-   
+  private TalonSRX launcherPivotingHood; 
+
   //Hardware
   Joystick _joy = new Joystick(1);
 
@@ -35,44 +36,57 @@ public class Launcher extends SubsystemBase {
   public Launcher() {
     launcherLead = new TalonSRX(9); 
     launcherFollow = new TalonSRX(10);
-    
-    launcherFollow.follow(launcherLead); // follows what the lead does 
-     
-    //Factory Defult all hardware to prevent unexpected behavior 
+    launcherPivotingHood = new TalonSRX();
+
+    launcherFollow.follow(launcherLead); // follows what the lead does
+
+    // Factory Defult all hardware to prevent unexpected behavior
     launcherLead.configFactoryDefault();
 
-    //Config senor used for primary PID [Velocity]
-    launcherLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0,30);
+    // Config senor used for primary PID [Velocity]
+    launcherLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 30);
 
-                                              /**
-		 * Phase sensor accordingly. 
-         * Positive Sensor Reading should match Green (blinking) Leds on Talon
-         */
-  launcherLead.configNominalOutputForward(0, 30);
-  launcherLead.configNominalOutputReverse(0,30);
-  launcherLead.configPeakOutputForward(1,30);//1,30
-  launcherLead.configPeakOutputReverse(-1,30);//1,30
-  launcherLead.setSensorPhase(true);
+    /**
+     * Phase sensor accordingly. Positive Sensor Reading should match Green
+     * (blinking) Leds on Talon
+     */
+    launcherLead.configNominalOutputForward(0, 30);
+    launcherLead.configNominalOutputReverse(0, 30);
+    launcherLead.configPeakOutputForward(1, 30);// 1,30
+    launcherLead.configPeakOutputReverse(-1, 30);// 1,30
+    launcherLead.setSensorPhase(true);
 
-  //Config the Velocity closed loop gains in slot 0
+    // Config the Velocity closed loop gains in slot 0
 
-  launcherLead.config_kF(0,.029, 30);
-  launcherLead.config_kP(0,1.2 , 30);//upped from 0.05 during Granite State Event
-  launcherLead.config_kI(0, 0, 30);
-  launcherLead.config_kD(0, 0, 30);
-  launcherLead.configClosedloopRamp(.25);
+    launcherLead.config_kF(0, .029, 30);
+    launcherLead.config_kP(0, 1.2, 30);// upped from 0.05 during Granite State Event
+    launcherLead.config_kI(0, 0, 30);
+    launcherLead.config_kD(0, 0, 30);
+    launcherLead.configClosedloopRamp(.25);
 
+    launcherPivotingHood.configNominalOutputForward(0, 30);
+    launcherPivotingHood.configNominalOutputReverse(0, 30);
+    launcherPivotingHood.configPeakOutputForward(1, 30);// 1,30
+    launcherPivotingHood.configPeakOutputReverse(-1, 30);// 1,30
+    launcherPivotingHood.setSensorPhase(true);
+
+    // Config the Velocity closed loop gains in slot 0
+
+    launcherPivotingHood.config_kF(0, .029, 30);
+    launcherPivotingHood.config_kP(0, 1.2, 30);// upped from 0.05 during Granite State Event
+    launcherPivotingHood.config_kI(0, 0, 30);
+    launcherPivotingHood.config_kD(0, 0, 30);
+    launcherPivotingHood.configClosedloopRamp(.25);
     
-  
   }
   
-  public void tuneLauncher() {
+  public void tunePivotingHood() {
 
     //Get gamepad axis
     double leftYstick = -1 * _joy.getY();
     
     //Get Talon/Victor's currst output percentage
-    double motorOutput = launcherLead.getMotorOutputPercent();
+    double motorOutput = launcherPivotingHood.getMotorOutputPercent();
 
     //Prepare line to print
     _sb.append("/tout:");
@@ -81,7 +95,7 @@ public class Launcher extends SubsystemBase {
     _sb.append("%"); // Percent
 
     _sb.append("/tspd:");
-    _sb.append(launcherLead.getSelectedSensorVelocity(0));
+    _sb.append(launcherPivotingHood.getSelectedSensorVelocity(0));
     _sb.append("u"); //Native units
     
     /** 
@@ -98,16 +112,16 @@ public class Launcher extends SubsystemBase {
 			 */
       double targetVelocity_UnitsPer100ms = leftYstick * 500.0 * 4096*3 / 600;
 			/* 500 RPM in either direction */
-      launcherLead.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
+      launcherPivotingHood.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
       /* Append more signals to print when in speed mode. */
 			_sb.append("\terr:");
-			_sb.append(launcherLead.getClosedLoopError(0));
+			_sb.append(launcherPivotingHood.getClosedLoopError(0));
 			_sb.append("\ttrg:");
 			_sb.append(targetVelocity_UnitsPer100ms);
 		} else {
 			/* Percent Output */
 
-			launcherLead.set(ControlMode.PercentOutput, leftYstick);
+			launcherPivotingHood.set(ControlMode.PercentOutput, leftYstick);
 		}
   /* Print built string every 10 loops */
   if (++_loops >= 10) {
@@ -118,6 +132,60 @@ public class Launcher extends SubsystemBase {
   _sb.setLength(0);
   
 }
+
+public void tuneLauncher() {
+
+  //Get gamepad axis
+  double leftYstick = -1 * _joy.getY();
+  
+  //Get Talon/Victor's currst output percentage
+  double motorOutput = launcherLead.getMotorOutputPercent();
+
+  //Prepare line to print
+  _sb.append("/tout:");
+  //Cast to int to remove decimal places
+  _sb.append((int) (motorOutput * 100));
+  _sb.append("%"); // Percent
+
+  _sb.append("/tspd:");
+  _sb.append(launcherLead.getSelectedSensorVelocity(0));
+  _sb.append("u"); //Native units
+  
+  /** 
+   * When button 1 is held, start and run Velocity Closed loop.
+   * Velocity Closed Loop is controlled by joystick position x500 RPM, [-500, 500] RPM
+   */
+  if (_joy.getRawButton(1)) {
+    /* Velocity Closed Loop */
+
+    /**
+     * Convert 500 RPM to units / 100ms.
+     * 4096 Units/Rev * 500 RPM / 600 100ms/min in either direction:
+     * velocity setpoint is in units/100ms
+     */
+    double targetVelocity_UnitsPer100ms = leftYstick * 500.0 * 4096*3 / 600;
+    /* 500 RPM in either direction */
+    launcherLead.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
+    /* Append more signals to print when in speed mode. */
+    _sb.append("\terr:");
+    _sb.append(launcherLead.getClosedLoopError(0));
+    _sb.append("\ttrg:");
+    _sb.append(targetVelocity_UnitsPer100ms);
+  } else {
+    /* Percent Output */
+
+    launcherLead.set(ControlMode.PercentOutput, leftYstick);
+  }
+/* Print built string every 10 loops */
+if (++_loops >= 10) {
+  _loops = 0;
+  System.out.println(_sb.toString());
+    }
+    /* Reset built string */
+_sb.setLength(0);
+
+}
+
   /**
    * Creates a new ExampleSubsystem.
    */
