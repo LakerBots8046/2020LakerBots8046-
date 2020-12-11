@@ -198,13 +198,35 @@ public void setLauncherSpeed(double speed){
   launcherLead.set(ControlMode.Velocity,speed); // what speed the launcher spins at ** velocity mode
 }
 
-public int getLauncherspeed(){
+public int getPivotingHoodSpeed(){
+  return launcherPivotingHood.getSelectedSensorVelocity();
+}
+public boolean isPivotingHoodSpeed(double target){
+  if (launcherPivotingHood.getSelectedSensorVelocity()>target) return true;
+  else return false;
+}
+
+public void spinPivotingHood(double power){
+  launcherPivotingHood.set(ControlMode.PercentOutput, power); //what percent power the launcher spins at
+}
+
+public void setPivotingHoodSpeed(double speed){
+  launcherPivotingHood.set(ControlMode.Velocity,speed); // what speed the launcher spins at ** velocity mode
+
+}
+
+public void setLauncherPosition(double position){
+  launcherPivotingHood.set(ControlMode.MotionMagic, position);
+} //add launcher position here
+
+public int getLauncherSpeed(){
   return launcherLead.getSelectedSensorVelocity();
 }
-public boolean isLauncherspeed(double target){
+public boolean isLauncherSpeed(double target){
   if (launcherLead.getSelectedSensorVelocity()>target) return true;
   else return false;
 }
+
  
 
 
