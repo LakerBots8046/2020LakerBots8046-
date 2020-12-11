@@ -36,7 +36,7 @@ public class Launcher extends SubsystemBase {
   public Launcher() {
     launcherLead = new TalonSRX(9); 
     launcherFollow = new TalonSRX(10);
-    launcherPivotingHood = new TalonSRX();
+    launcherPivotingHood = new TalonSRX(11);
 
     launcherFollow.follow(launcherLead); // follows what the lead does
 
