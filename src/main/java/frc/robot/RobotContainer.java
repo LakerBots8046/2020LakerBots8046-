@@ -76,8 +76,13 @@ public class RobotContainer {
   
 
   drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4)));
+  //launcher.setdefaultcommand
+
+
 //elevator.setDefaultCommand(new tuneElevator(elevator));
-//launcher.setDefaultCommand(new tuneLauncher(launcher));  
+//launcher.setDefaultCommand(new tuneLauncher(launcher)); 
+// @Paolo - need to add the command tuneHood (launcher here)
+
 }
  
   private void configureButtonBindings() {
