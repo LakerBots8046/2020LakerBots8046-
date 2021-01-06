@@ -76,12 +76,12 @@ public class RobotContainer {
   
 
   drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4)));
-  //launcher.setdefaultcommand
+  //launcher.setDefaultCommand(new tuneLauncher(launcher));
+  //launcher.setDefaultCommand(new tuneHood(launcher));// enable this if tuning the hood
+  //elevator.setDefaultCommand(new tuneElevator(elevator));
 
-
-//elevator.setDefaultCommand(new tuneElevator(elevator));
-//launcher.setDefaultCommand(new tuneLauncher(launcher)); 
 // @Paolo - need to add the command tuneHood (launcher here)
+// 
 
 }
  
@@ -116,6 +116,9 @@ public class RobotContainer {
     new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLauncher(launcher, 1));
     new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ExtendIntakeArm(intake));
     new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
+    new JoystickButton(Operatorcontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, 1000));//long distance shot
+    new JoystickButton(Operatorcontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, 0));//close shot
+    
   }
 
 

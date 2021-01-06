@@ -8,7 +8,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj2.command.SubsystemBase; 
 import com.ctre.phoenix.motorcontrol.ControlMode; 
 import com.ctre.phoenix.motorcontrol.can.*;
 import com.ctre.phoenix.motorcontrol.FollowerType; 
@@ -215,9 +214,10 @@ public void setPivotingHoodSpeed(double speed){
 
 }
 
-public void setLauncherPosition(double position){
+public void setPivotingHoodPosition(double position){ // Change this to be setPivotingHoodPosition
   launcherPivotingHood.set(ControlMode.MotionMagic, position);
-} //add launcher position here
+} //add launcher position here 
+
 
 public int getLauncherSpeed(){
   return launcherLead.getSelectedSensorVelocity();
