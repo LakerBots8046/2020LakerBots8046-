@@ -71,12 +71,20 @@ public class Launcher extends SubsystemBase {
 
     // Config the Velocity closed loop gains in slot 0
 
+    // we still need to tune these once we get the system operational
     launcherPivotingHood.config_kF(0, .029, 30);
     launcherPivotingHood.config_kP(0, 1.2, 30);// upped from 0.05 during Granite State Event
     launcherPivotingHood.config_kI(0, 0, 30);
     launcherPivotingHood.config_kD(0, 0, 30);
     launcherPivotingHood.configClosedloopRamp(.25);
+
+    launcherPivotingHood.configForwardSoftLimitThreshold(1000); // maybe add ",0"?
+    launcherPivotingHood.configReverseSoftLimitThreshold(0);
+    launcherPivotingHood.configForwardSoftLimitEnable(false); //enable once tuning is complete
+    launcherPivotingHood.configReverseSoftLimitEnable(false);// enable once tuning is complete
     
+
+
   }
   
   public void tunePivotingHood() {
@@ -200,6 +208,11 @@ public void setLauncherSpeed(double speed){
 public int getPivotingHoodSpeed(){
   return launcherPivotingHood.getSelectedSensorVelocity();
 }
+public int getPivotingHoodPosition(){
+  return launcherPivotingHood.getSelectedSensorPosition();
+}
+
+
 public boolean isPivotingHoodSpeed(double target){
   if (launcherPivotingHood.getSelectedSensorVelocity()>target) return true;
   else return false;
@@ -218,6 +231,12 @@ public void setPivotingHoodPosition(double position){ // Change this to be setPi
   launcherPivotingHood.set(ControlMode.MotionMagic, position);
 } //add launcher position here 
 
+public boolean isPivotingHoodAtPosition(int target){
+  int currentPosition = this.getPivotingHoodPosition();
+  int positionError = Math.abs(currentPosition-target);
+  return positionError < 200; //200 borrowed from 319's 2019 bba code
+}
+
 
 public int getLauncherSpeed(){
   return launcherLead.getSelectedSensorVelocity();
@@ -233,7 +252,6 @@ public boolean isLauncherSpeed(double target){
 public boolean launcherIsAtSpeed(){
   if (launcherLead.getClosedLoopError()< 1000) return true;
   else return false;
-
 }
 
  @Override

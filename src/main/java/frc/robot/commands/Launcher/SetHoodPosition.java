@@ -5,8 +5,8 @@ import frc.robot.subsystems.Launcher;
 // import frc.robot.Robot;
 public class SetHoodPosition extends CommandBase{
     private Launcher Launcher;
-    private double value;
-    public SetHoodPosition(Launcher subsystem, double position){
+    private int value;
+    public SetHoodPosition(Launcher subsystem, int position){
         Launcher = subsystem;
         value = position;
         addRequirements(Launcher);
@@ -21,7 +21,7 @@ public class SetHoodPosition extends CommandBase{
     }
 
     public boolean isFinished(){
-        return Launcher.launcherIsAtSpeed();
+        return Launcher.isPivotingHoodAtPosition(value);
     }
 
     public void end() {
