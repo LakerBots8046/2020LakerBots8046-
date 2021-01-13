@@ -74,6 +74,7 @@ public class RobotContainer {
 
 // A chooser for autonomous commands
   
+  intake.retractintakearm();
 
   drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4)));
   //launcher.setDefaultCommand(new tuneLauncher(launcher));
@@ -105,7 +106,7 @@ public class RobotContainer {
     new JoystickButton(Drivercontroller,Button.kB.value).whenPressed(new SpinIntake(intake,0.0));
     new JoystickButton(Drivercontroller,Button.kBumperRight.value).whenPressed(new StopLaunch(elevator, launcher));// in vbus mode so it coasts to a stop
     new JoystickButton(Drivercontroller,Button.kA.value).whenPressed(new SmartCollectWithLED(intake, elevator,launcher,LED));
-    new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED));
+    //new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED));
     new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
     new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartCollectLastBall(intake, elevator, launcher));
     //sample comment
@@ -113,9 +114,9 @@ public class RobotContainer {
     
     new JoystickButton(Operatorcontroller, Button.kY.value).whenPressed(new ExtendClimber(climber));
     new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
-    new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLauncher(launcher, 1));
-    new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ExtendIntakeArm(intake));
-    new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
+    //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLaunc her(launcher, 1));
+    new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ToggleIntakeArm(intake));
+    //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
     new JoystickButton(Operatorcontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, 1000));//long distance shot
     new JoystickButton(Operatorcontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, 0));//close shot
     

@@ -70,7 +70,6 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();}
 
     public Robot() { 
-    
 
    // autoChooser = new SendableChooser<Command>();
     //autoChooser.setDefaultOption("Do Nothing", new ());

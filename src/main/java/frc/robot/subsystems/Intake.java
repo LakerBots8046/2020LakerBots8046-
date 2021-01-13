@@ -23,6 +23,8 @@ public class Intake extends SubsystemBase { // talon control our intake
   private TalonSRX intakeLead;
   private VictorSPX intakeFollow;
   private DoubleSolenoid intakearmDoubleSolenoid;
+  public boolean armIsUp;
+
   /**
    * 
    * Creates a new ExampleSubsystem.
@@ -34,28 +36,31 @@ public class Intake extends SubsystemBase { // talon control our intake
     intakeFollow.follow(intakeLead);  // the follow follows what the lead does 
     //intakearmDoubleSolenoid = new DoubleSolenoid(1,6,7);///DO THIS FIRST
     intakearmDoubleSolenoid = new DoubleSolenoid(1,6,7);
+    armIsUp = true;
 
-     
+
   }
 //  public void extendintakearm(){
 //    intakearmDoubleSolenoid.set(Value.kReverse);
 //  }
 public void extendintakearm(){
   intakearmDoubleSolenoid.set(Value.kReverse);
+  armIsUp = false;
 }
-
-
-
 
 //  public void retractintakearm(){//AND THIS
 //    intakearmDoubleSolenoid.set(Value.kForward);
 //  }
 public void retractintakearm(){
       intakearmDoubleSolenoid.set(Value.kForward);
+      armIsUp = true;
+      
+
 }
   public void spinMotor(double speed){
     intakeLead.set(ControlMode.PercentOutput, speed); // how fast the intake spins
   }
+
 
   @Override
   public void periodic() {
