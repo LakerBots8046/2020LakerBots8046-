@@ -48,6 +48,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    /*
     new Thread(() -> {
       UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
       camera.setResolution(160, 120);
@@ -66,6 +67,7 @@ public class Robot extends TimedRobot {
         outputStream.putFrame(output);
       }
     }).start();
+    */
 
     m_robotContainer = new RobotContainer();}
 

@@ -27,7 +27,7 @@ public class Drivetrain extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  private final PowerDistributionPanel pdb;
+  //private final PowerDistributionPanel pdb;
 
   private final CANSparkMax leftLead; // spark max controls drivetrain
   //leftLead = new CANSparkMax (0);
@@ -52,7 +52,7 @@ leftLead = new CANSparkMax(6,MotorType.kBrushless);
 leftfollow = new CANSparkMax(7,MotorType.kBrushless);
 rightLead = new CANSparkMax (5,MotorType.kBrushless);
 rightfollow = new CANSparkMax (8,MotorType.kBrushless);
-pdb = new PowerDistributionPanel(0);
+//pdb = new PowerDistributionPanel(0);
 
 leftEncoder = leftLead.getEncoder(EncoderType.kHallSensor, 42);
 leftEncoder.setPosition(0);
@@ -80,19 +80,20 @@ public void drive(double move, double rotate) {
  //System.out.println("drive method is running NOW" +move);
 }
   @Override
-  public void periodic() {
+  public void periodic() {/*
     SmartDashboard.putNumber("leftLeadCurrent", +leftLeadCurrent());
     SmartDashboard.putNumber("leftfollowCurrent", +leftFollowCurrent());
     SmartDashboard.putNumber("rightLeadCurrent", +rightLeadCurrent());
     SmartDashboard.putNumber("rightfollowCurrent", +rightFollowCurrent());
     // This method will be called once per scheduler run
+    */
   }
 //hi
 
   public double getDriveDistance(){
   return leftEncoder.getPosition();
   } 
-
+/*
   public double leftLeadCurrent(){
     return pdb.getCurrent(2);//corresponds with pdb slot not can ID
   }
@@ -105,6 +106,7 @@ public void drive(double move, double rotate) {
   public double rightFollowCurrent(){
     return pdb.getCurrent(13);
   }
+  */
 
   public boolean isDistanceReached(double value){
     if (leftEncoder.getPosition()>value) return true;

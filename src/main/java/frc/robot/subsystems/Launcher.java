@@ -67,13 +67,13 @@ public class Launcher extends SubsystemBase {
     launcherPivotingHood.configNominalOutputReverse(0, 30);
     launcherPivotingHood.configPeakOutputForward(1, 30);// 1,30
     launcherPivotingHood.configPeakOutputReverse(-1, 30);// 1,30
-    launcherPivotingHood.setSensorPhase(true);
+    launcherPivotingHood.setSensorPhase(false);
 
     // Config the Velocity closed loop gains in slot 0
 
     // we still need to tune these once we get the system operational
-    launcherPivotingHood.config_kF(0, .029, 30);
-    launcherPivotingHood.config_kP(0, 1.2, 30);// upped from 0.05 during Granite State Event
+    launcherPivotingHood.config_kF(0, .7, 30);//.548
+    launcherPivotingHood.config_kP(0, 0.1, 30);// upped from 0.05 during Granite State Event
     launcherPivotingHood.config_kI(0, 0, 30);
     launcherPivotingHood.config_kD(0, 0, 30);
     launcherPivotingHood.configClosedloopRamp(.25);
@@ -82,6 +82,9 @@ public class Launcher extends SubsystemBase {
     launcherPivotingHood.configReverseSoftLimitThreshold(0);
     launcherPivotingHood.configForwardSoftLimitEnable(false); //enable once tuning is complete
     launcherPivotingHood.configReverseSoftLimitEnable(false);// enable once tuning is complete
+
+    launcherPivotingHood.configMotionCruiseVelocity(1400, 30);
+    launcherPivotingHood.configMotionAcceleration(1400,30);
     
 
 
@@ -117,7 +120,7 @@ public class Launcher extends SubsystemBase {
 			 * 4096 Units/Rev * 500 RPM / 600 100ms/min in either direction:
 			 * velocity setpoint is in units/100ms
 			 */
-      double targetVelocity_UnitsPer100ms = leftYstick * 500.0 * 4096*3 / 600;
+      double targetVelocity_UnitsPer100ms = leftYstick * 1400;
 			/* 500 RPM in either direction */
       launcherPivotingHood.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
       /* Append more signals to print when in speed mode. */
@@ -225,6 +228,10 @@ public void spinPivotingHood(double power){
 public void setPivotingHoodSpeed(double speed){
   launcherPivotingHood.set(ControlMode.Velocity,speed); // what speed the launcher spins at ** velocity mode
 
+}
+
+public void resetHoodEncoder(){
+  launcherPivotingHood.setSelectedSensorPosition(0, 0, 30);
 }
 
 public void setPivotingHoodPosition(double position){ // Change this to be setPivotingHoodPosition

@@ -75,10 +75,11 @@ public class RobotContainer {
 // A chooser for autonomous commands
   
   intake.retractintakearm();
+  launcher.resetHoodEncoder();
 
   drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4)));
   //launcher.setDefaultCommand(new tuneLauncher(launcher));
-  //launcher.setDefaultCommand(new tuneHood(launcher));// enable this if tuning the hood
+  launcher.setDefaultCommand(new tuneHood(launcher));// enable this if tuning the hood
   //elevator.setDefaultCommand(new tuneElevator(elevator));
 
 // @Paolo - need to add the command tuneHood (launcher here)
@@ -113,10 +114,10 @@ public class RobotContainer {
   
     
     new JoystickButton(Operatorcontroller, Button.kY.value).whenPressed(new ExtendClimber(climber));
-    new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
+    //new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
     //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLaunc her(launcher, 1));
-    new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ToggleIntakeArm(intake));
-    //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
+    new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ExtendIntakeArm(intake));
+    new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
     new JoystickButton(Operatorcontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, 1000));//long distance shot
     new JoystickButton(Operatorcontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, 0));//close shot
     
