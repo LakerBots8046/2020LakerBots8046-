@@ -17,8 +17,8 @@ public class WaitForPowerCell extends CommandBase{
     }
 
     public void execute(){
-        System.out.println("checking for ball");
-        System.out.println("Sensor Value"+Elevator.getDigitalCargoSensorValue());
+       // System.out.println("checking for ball");
+       // System.out.println("Sensor Value"+Elevator.getDigitalCargoSensorValue());
     }
 
     public boolean isFinished(){
@@ -26,7 +26,7 @@ public class WaitForPowerCell extends CommandBase{
     }
 
     public void end() {
-        System.out.println("ball detected");
+      //  System.out.println("ball detected");
     
     }
 

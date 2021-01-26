@@ -73,7 +73,7 @@ public class Launcher extends SubsystemBase {
 
     // we still need to tune these once we get the system operational
     launcherPivotingHood.config_kF(0, .7, 30);//.548
-    launcherPivotingHood.config_kP(0, 0.1, 30);// upped from 0.05 during Granite State Event
+    launcherPivotingHood.config_kP(0, 1.8, 30);// upped from 0.05 during Granite State Event
     launcherPivotingHood.config_kI(0, 0, 30);
     launcherPivotingHood.config_kD(0, 0, 30);
     launcherPivotingHood.configClosedloopRamp(.25);
@@ -83,8 +83,8 @@ public class Launcher extends SubsystemBase {
     launcherPivotingHood.configForwardSoftLimitEnable(false); //enable once tuning is complete
     launcherPivotingHood.configReverseSoftLimitEnable(false);// enable once tuning is complete
 
-    launcherPivotingHood.configMotionCruiseVelocity(1400, 30);
-    launcherPivotingHood.configMotionAcceleration(1400,30);
+    launcherPivotingHood.configMotionCruiseVelocity(200, 30);
+    launcherPivotingHood.configMotionAcceleration(1200,30);
     
 
 
@@ -264,7 +264,7 @@ public boolean launcherIsAtSpeed(){
  @Override
   public void periodic() {
    
-
+System.out.println("Hood Position" +launcherPivotingHood.getSelectedSensorPosition());
     SmartDashboard.putNumber("shooter speed", +launcherLead.getSelectedSensorVelocity());
     // This method will be called once per scheduler run
   }

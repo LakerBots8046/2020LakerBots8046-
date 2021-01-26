@@ -29,7 +29,7 @@ public class JoystickDrive extends CommandBase{
 
     public void execute(){
         
-        m_drivetrain.drive(.7*m_move.getAsDouble() ,.7*m_rotate.getAsDouble());
+        m_drivetrain.drive(.55*m_move.getAsDouble() ,.55*m_rotate.getAsDouble());
         //System.out.println("joystick drive is running rotate value is" +m_rotate);
     
     }

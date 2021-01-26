@@ -21,8 +21,7 @@ public class ToggleIntakeArm extends CommandBase{
            intake.retractintakearm();
        }
 
-       intake.extendintakearm();
-
+    
         System.out.println("TogglingArm");
     }
 
