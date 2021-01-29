@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import static edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.*;
 
 
@@ -52,6 +53,7 @@ public class RobotContainer {
   //private final Shooter shooter = new Shooter();
   private final CommandBase AutoScoreandCollect = new AutoScoreandCollect(launcher, elevator, intake, drivetrain);
   private final CommandBase AutonomousDriveAndShoot = new AutonomousDriveAndShoot(launcher, elevator, intake, drivetrain);
+  private final CommandBase Slalom = new Slalom(launcher, elevator, intake, drivetrain);
 
   //private final CommandBase autoCommand = new ElevatorStop(intake, elevator, launcher);
 
@@ -66,8 +68,10 @@ public class RobotContainer {
     configureButtonBindings();
 
      // Add commands to the autonomous command chooser
-     m_chooser.setDefaultOption("A New Hope", AutoScoreandCollect);
+     m_chooser.setDefaultOption("A New Hope", Slalom);
      m_chooser.addOption("Return of the Jedi", AutonomousDriveAndShoot);
+     //add barrell race
+     //add bounce
  
      // Put the chooser on the dashboard
      Shuffleboard.getTab("Autonomous").add(m_chooser);
@@ -77,17 +81,20 @@ public class RobotContainer {
   intake.retractintakearm();
   launcher.resetHoodEncoder();
 
-  drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4)));
+}
+ 
+  private void configureButtonBindings() {
+
+
+  JoystickButton driver_LStickButton = new JoystickButton(Drivercontroller, XboxController.Button.kStickLeft.value);
+
+
+ // drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4)));
+  drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4),()-> driver_LStickButton.get()));
   //launcher.setDefaultCommand(new tuneLauncher(launcher));
   //launcher.setDefaultCommand(new tuneHood(launcher));// enable this if tuning the hood
   //elevator.setDefaultCommand(new tuneElevator(elevator));
 
-// @Paolo - need to add the command tuneHood (launcher here)
-// 
-
-}
- 
-  private void configureButtonBindings() {
   //------------------------Basic Functionallity Testing ------------------------//
 
   //new JoystickButton(Drivercontroller,Button.kA.value).whenPressed(new SpinIntake(intake, 0.-.5));

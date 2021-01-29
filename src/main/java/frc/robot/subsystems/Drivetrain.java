@@ -80,7 +80,9 @@ public void drive(double move, double rotate) {
  //System.out.println("drive method is running NOW" +move);
 }
   @Override
-  public void periodic() {/*
+  public void periodic() {
+    System.out.println("Left Encoder Value" +getDriveDistance() );
+    /*
     SmartDashboard.putNumber("leftLeadCurrent", +leftLeadCurrent());
     SmartDashboard.putNumber("leftfollowCurrent", +leftFollowCurrent());
     SmartDashboard.putNumber("rightLeadCurrent", +rightLeadCurrent());

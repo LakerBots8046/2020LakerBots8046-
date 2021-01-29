@@ -13,7 +13,7 @@ import frc.robot.subsystems.*;
 //import frc.robot.commands;
 
 
-public class AutoScoreandCollect extends SequentialCommandGroup {
+public class BarrelRacing extends SequentialCommandGroup {
   /**
    * Creates a new ComplexAuto.
    *
@@ -21,7 +21,7 @@ public class AutoScoreandCollect extends SequentialCommandGroup {
    * @param launcher The launcher subsystem this command will run on
    * @param elevator
    */
-  public AutoScoreandCollect(Launcher launcher, Elevator elevator, Intake intake, Drivetrain drivetrain) {
+  public BarrelRacing(Launcher launcher, Elevator elevator, Intake intake, Drivetrain drivetrain) {
     addCommands(
       new AutoDrive(drivetrain, -0.5, 0.0, 23.0),//(power, turn, and distance to stop) drives forward a distance found in command
       new AutoDrive(drivetrain, 0.0, 0.0, 23.0), // stops after it has reached that distance
