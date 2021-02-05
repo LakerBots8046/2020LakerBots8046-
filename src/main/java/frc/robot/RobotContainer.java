@@ -54,6 +54,7 @@ public class RobotContainer {
   private final CommandBase AutoScoreandCollect = new AutoScoreandCollect(launcher, elevator, intake, drivetrain);
   private final CommandBase AutonomousDriveAndShoot = new AutonomousDriveAndShoot(launcher, elevator, intake, drivetrain);
   private final CommandBase Slalom = new Slalom(launcher, elevator, intake, drivetrain);
+  private final CommandBase BarrelRacing = new BarrelRacing(launcher, elevator, intake, drivetrain);
 
   //private final CommandBase autoCommand = new ElevatorStop(intake, elevator, launcher);
 
@@ -68,7 +69,7 @@ public class RobotContainer {
     configureButtonBindings();
 
      // Add commands to the autonomous command chooser
-     m_chooser.setDefaultOption("A New Hope", Slalom);
+     m_chooser.setDefaultOption("A New Hope", BarrelRacing);
      m_chooser.addOption("Return of the Jedi", AutonomousDriveAndShoot);
      //add barrell race
      //add bounce

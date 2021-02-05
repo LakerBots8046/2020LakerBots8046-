@@ -30,19 +30,21 @@ public class Slalom extends SequentialCommandGroup {
     //step 4 drive forward and trun right
     //step 5 Big turn left
     //step 6 drive forward and turn right
-    //step 7 drive straight
+    //step 7 drive straight?>,mbv+
     //step 8 drive forward and turn right 
     //step 9 drive forward and turn left
 
 
-      new AutoDrive(drivetrain, -0.5, 0.0, 100.0)//(power, turn, and distance to stop) drives forward a distance found in command
-      //new AutoDrive(drivetrain, 0.0, 0.0, 23.0), // stops after it has reached that distance
-      //new autoSmartLaunch(launcher, elevator),
-      //new AutodriveReverse(drivetrain, 0.5, 0.0, 10.0),
-      //new AutodriveReverse(drivetrain, 0.6, 0.480, -29.0),
-      //new AutodriveReverse(drivetrain, 0.0, 0.0, -29.0),
-      //new AutoCollectWhileDriving(intake, elevator, launcher, drivetrain),
-      //new AutoDrive(drivetrain, 0.0, 0.0, 10.0)
+      new AutoDrive(drivetrain, -0.5, -.3, 25.0), //(power, turn, and distance to stop) drives forward a distance found in command
+      new AutoDrive(drivetrain, -0.5, .37, 50.0), // stops after it has reached that distance
+      new AutoDrive(drivetrain, -0.5, 0.0, 115.0),
+      new AutoDrive(drivetrain, -0.5, 0.37, 155.0),
+      new AutoDrive(drivetrain, -0.5, -0.35, 237.0),
+      new AutoDrive(drivetrain, -0.5, 0.4, 269.0),
+      new AutoDrive(drivetrain, -0.5, 0.0, 330.0),
+      new AutoDrive(drivetrain, -0.5, 0.37, 362.0),
+      new AutoDrive(drivetrain, -0.5, -0.3, 390.0),
+      new AutoDrive(drivetrain, -0.5, 0.0, 395.0)
       );
   }
 }
