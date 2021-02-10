@@ -23,14 +23,14 @@ public class Bounce extends SequentialCommandGroup {
    */
   public Bounce(Launcher launcher, Elevator elevator, Intake intake, Drivetrain drivetrain) {
     addCommands(
-      new AutoDrive(drivetrain, -0.5, -0.32, 29.0),//(power, turn, and distance to stop) drives forward a distance found in command
-      new AutoDrive(drivetrain, 0.0, 0.0, 29.0), // stops after it has reached that distance
-      //new autoSmartLaunch(launcher, elevator),
-      new AutodriveReverse(drivetrain, 0.5, -0.3, -5.0)
-      //new AutodriveReverse(drivetrain, 0.6, 0.480, -29.0),
-      //new AutodriveReverse(drivetrain, 0.0, 0.0, -29.0),
-      //new AutoCollectWhileDriving(intake, elevator, launcher, drivetrain),
-      //new AutoDrive(drivetrain, 0.0, 0.0, 10.0)
+      new AutoDrive(drivetrain, -0.5, -0.32, 29.0), //turn left
+      new AutoDrive(drivetrain, 0.0, 0.0, 29.0), // stops after it has reached that distance and hits the cone
+      new AutodriveReverse(drivetrain, 0.5, -0.24, -7.0), //in reverse turn
+      new AutodriveReverse(drivetrain, 0.5, 0.0, -25.0), //in reverse drive straight
+      new AutodriveReverse(drivetrain, 0.5, -0.4, -82.0), // turn around cone
+      new AutodriveReverse(drivetrain, 0.5, 0.0, -118.0), // straight to target cone
+      new AutodriveReverse(drivetrain, 0.0, 0.0, -118.0),
+      new AutoDrive(drivetrain, -0.5, 0.0, -60.0)
       );
   }
 }
