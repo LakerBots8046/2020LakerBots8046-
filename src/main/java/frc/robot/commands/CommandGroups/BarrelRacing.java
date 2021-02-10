@@ -24,13 +24,14 @@ public class BarrelRacing extends SequentialCommandGroup {
   public BarrelRacing(Launcher launcher, Elevator elevator, Intake intake, Drivetrain drivetrain) {
     addCommands(
       new AutoDrive(drivetrain, -0.5, 0.0, 55.0),//(power, turn, and distance to stop) drives forward a distance found in command
-      new AutoDrive(drivetrain, -0.5, 0.37, 207.0), 
-      new AutoDrive(drivetrain, -0.5, 0.0, 260.0),
-      new AutoDrive(drivetrain, -0.5, -0.37, 324.4),
-      new AutoDrive(drivetrain, -0.5, 0.0, 347.0),
-      new AutoDrive(drivetrain, -0.5, 0.37, 440.0),
-      new AutoDrive(drivetrain, -0.5, 0.0, 480.0),
-      new AutoDrive(drivetrain, -0.7, -0.26, 590.0)
+      new AutoDrive(drivetrain, -0.5, 0.37, 207.0),//turn around first cone
+      new AutoDrive(drivetrain, -0.5, 0.0, 260.0),//going straight
+      new AutoDrive(drivetrain, -0.5, -0.37, 327.4),//turn left around second cone
+      new AutoDrive(drivetrain, -0.5, 0.0, 352.0),//drive straight
+      new AutoDrive(drivetrain, -0.5, 0.37, 440.0),//turn right around third cone
+      new AutoDrive(drivetrain, -0.5, 0.0, 470.0),//drive straight towards home
+      new AutoDrive(drivetrain, -0.7, -0.135, 532.0),//send it
+      new AutoDrive(drivetrain, -0.7, 0.0, 560.0)
       );
   }
 }

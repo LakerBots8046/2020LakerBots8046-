@@ -55,7 +55,7 @@ public class RobotContainer {
   private final CommandBase AutonomousDriveAndShoot = new AutonomousDriveAndShoot(launcher, elevator, intake, drivetrain);
   private final CommandBase Slalom = new Slalom(launcher, elevator, intake, drivetrain);
   private final CommandBase BarrelRacing = new BarrelRacing(launcher, elevator, intake, drivetrain);
-
+  private final CommandBase Bounce = new Bounce(launcher, elevator, intake, drivetrain);
   //private final CommandBase autoCommand = new ElevatorStop(intake, elevator, launcher);
 
   private final XboxController Drivercontroller = new XboxController(0);
@@ -69,7 +69,7 @@ public class RobotContainer {
     configureButtonBindings();
 
      // Add commands to the autonomous command chooser
-     m_chooser.setDefaultOption("A New Hope", BarrelRacing);
+     m_chooser.setDefaultOption("A New Hope", Bounce);
      m_chooser.addOption("Return of the Jedi", AutonomousDriveAndShoot);
      //add barrell race
      //add bounce
