@@ -116,18 +116,18 @@ public class RobotContainer {
     new JoystickButton(Drivercontroller,Button.kBumperRight.value).whenPressed(new StopLaunch(elevator, launcher));// in vbus mode so it coasts to a stop
     new JoystickButton(Drivercontroller,Button.kA.value).whenPressed(new SmartCollectWithLED(intake, elevator,launcher,LED));
     new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED));
-    new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
-    new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartCollectLastBall(intake, elevator, launcher));
+    //new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
+    //new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartCollectLastBall(intake, elevator, launcher));
     //sample comment
   
     
-   //new JoystickButton(Operatorcontroller, Button.kY.value).whenPressed(new ExtendClimber(climber));
-   // new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
+   new JoystickButton(Operatorcontroller, Button.kY.value).whenPressed(new ExtendClimber(climber));
+    new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
     //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLaunc her(launcher, 1));
     new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ToggleIntakeArm(intake));
    // new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
-    new JoystickButton(Operatorcontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, -300));//long distance shot
-    new JoystickButton(Operatorcontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, 0));//close shot
+   // new JoystickButton(Operatorcontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, -300));//long distance shot
+   // new JoystickButton(Operatorcontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, 0));//close shot
     
   }
 
@@ -143,7 +143,6 @@ public class RobotContainer {
 
     return m_chooser.getSelected();
    }
-
    public Climber getClimber(){
      return this.climber;
    }

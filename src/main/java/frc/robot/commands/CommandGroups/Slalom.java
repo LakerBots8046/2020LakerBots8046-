@@ -24,8 +24,8 @@ public class Slalom extends SequentialCommandGroup {
   public Slalom(Launcher launcher, Elevator elevator, Intake intake, Drivetrain drivetrain) {
     addCommands(
 
-    //Step 1 druve forward and turn left
-    //Step 2 drive forward and turn right
+    //step 1 drive forward and turn left
+    //step 2 drive forward and turn right
     //step 3 drive straight
     //step 4 drive forward and trun right
     //step 5 Big turn left
