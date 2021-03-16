@@ -11,16 +11,17 @@ import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Launcher;
 import frc.robot.subsystems.Intake;
 import frc.robot.commands.*;
+//import frc.robot.commands.launcher;
 
-
-public class SmartLaunchWithLED extends ParallelDeadlineGroup {
+public class SmartLaunchLongRange extends ParallelDeadlineGroup {
   /**
    * Creates a new ReplaceMeParallelDeadlineGroup.
    */
-  public SmartLaunchWithLED(Intake intake, Elevator elevator, Launcher launcher, LED LED, double elevatorSpeed) {
+  public SmartLaunchLongRange(Intake intake, Elevator elevator, Launcher launcher, LED LED) {
     // Add your commands in the super() call.  Add the deadline first.
     super(
-        new SmartLaunch(launcher, elevator, elevatorSpeed),
+      //new SetHoodPosition(launcher, -500),
+        new SmartLaunch(launcher, elevator, 28000),
        new LaunchLED(LED)
     );
   }

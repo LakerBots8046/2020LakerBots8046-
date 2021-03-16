@@ -44,7 +44,8 @@ public class Slalom extends SequentialCommandGroup {
       new AutoDrive(drivetrain, -0.5, 0.0, 330.0),
       new AutoDrive(drivetrain, -0.5, 0.37, 362.0),
       new AutoDrive(drivetrain, -0.5, -0.3, 390.0),
-      new AutoDrive(drivetrain, -0.5, 0.0, 395.0)
+      new AutoDrive(drivetrain, -0.5, 0.0, 395.0),
+      new SmartLaunch(launcher, elevator, 17000)
       );
   }
 }

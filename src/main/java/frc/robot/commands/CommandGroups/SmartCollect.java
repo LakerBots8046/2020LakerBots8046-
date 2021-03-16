@@ -32,7 +32,7 @@ public class SmartCollect extends SequentialCommandGroup {
        
         //new TurnOnLED(launcher), // turns off LED
         new SpinIntake(intake, -0.75), // spins the intake (could be higher?) or increase gear ratio...
-       // new ExtendIntakeArm(intake),
+        new ExtendIntakeArm(intake),
         new WaitForPowerCell(elevator), // ends when the proximity sensor detects a power cell
         new SpinIntake(intake, 0.0),
         new autoadvanceElevator(elevator),

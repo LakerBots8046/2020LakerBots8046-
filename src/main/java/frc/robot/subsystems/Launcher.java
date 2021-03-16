@@ -264,7 +264,7 @@ public boolean launcherIsAtSpeed(){
  @Override
   public void periodic() {
    
-//System.out.println("Hood Position" +launcherPivotingHood.getSelectedSensorPosition());
+System.out.println("Hood Position" +launcherPivotingHood.getSelectedSensorPosition());
     SmartDashboard.putNumber("shooter speed", +launcherLead.getSelectedSensorVelocity());
     // This method will be called once per scheduler run
   }

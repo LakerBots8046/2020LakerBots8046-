@@ -23,7 +23,7 @@ public class AutonomousDriveAndShoot extends SequentialCommandGroup {
     addCommands(
       new AutoDrive(drivetrain, -0.3, 0.0, 25.0),// drives forward a distance found in command
       new AutoDrive(drivetrain, 0.0, 0.0, 25.0), // stops after it has reached that distance
-      new SmartLaunch(launcher, elevator) // scores all the points
+      new SmartLaunch(launcher, elevator, 17000) // scores all the points
       //new AutoDrive(drivetrain, 0.3, 0.0),
       //new AutoDrive(drivetrain, 0.3, 0.2),
       //new AutoDrive(drivetrain, -0.3, 0.2),

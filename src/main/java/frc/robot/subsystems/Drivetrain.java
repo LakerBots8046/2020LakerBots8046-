@@ -81,7 +81,7 @@ public void drive(double move, double rotate) {
 }
   @Override
   public void periodic() {
-    System.out.println("Left Encoder Value" +getDriveDistance() );
+    //System.out.println("Left Encoder Value" +getDriveDistance() );
     /*
     SmartDashboard.putNumber("leftLeadCurrent", +leftLeadCurrent());
     SmartDashboard.putNumber("leftfollowCurrent", +leftFollowCurrent());

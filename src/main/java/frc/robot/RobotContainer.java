@@ -54,7 +54,7 @@ public class RobotContainer {
   private final CommandBase AutoScoreandCollect = new AutoScoreandCollect(launcher, elevator, intake, drivetrain);
   private final CommandBase AutonomousDriveAndShoot = new AutonomousDriveAndShoot(launcher, elevator, intake, drivetrain);
   private final CommandBase Slalom = new Slalom(launcher, elevator, intake, drivetrain);
-  private final CommandBase BarrelRacing = new BarrelRacing(launcher, elevator, intake, drivetrain);
+  private final CommandBase BarrelRacing = new BarrelRacing(launcher, elevator, intake, drivetrain, climber);
   private final CommandBase Bounce = new Bounce(launcher, elevator, intake, drivetrain);
   //private final CommandBase autoCommand = new ElevatorStop(intake, elevator, launcher);
 
@@ -69,7 +69,7 @@ public class RobotContainer {
     configureButtonBindings();
 
      // Add commands to the autonomous command chooser
-     m_chooser.setDefaultOption("A New Hope", Bounce);
+     m_chooser.setDefaultOption("A New Hope", BarrelRacing);
      m_chooser.addOption("Return of the Jedi", AutonomousDriveAndShoot);
      //add barrell race
      //add bounce
@@ -112,22 +112,25 @@ public class RobotContainer {
     //new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ExtendIntakeArm(intake));
     //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
 
-    new JoystickButton(Drivercontroller,Button.kB.value).whenPressed(new SpinIntake(intake,0.0));
+    //new JoystickButton(Drivercontroller,Button.kB.value).whenPressed(new SpinIntake(intake,0.0));//stop intake
     new JoystickButton(Drivercontroller,Button.kBumperRight.value).whenPressed(new StopLaunch(elevator, launcher));// in vbus mode so it coasts to a stop
-    new JoystickButton(Drivercontroller,Button.kA.value).whenPressed(new SmartCollectWithLED(intake, elevator,launcher,LED));
-    new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED));
-    //new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
+    new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartCollectWithLED(intake, elevator,launcher,LED));
+    //new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED, 17000));
+    new JoystickButton(Drivercontroller, Button.kStart.value).whenPressed(new SmartLaunchLongRange(intake, elevator, launcher, LED));
+    new JoystickButton(Drivercontroller, Button.kA.value).whenPressed(new SetHoodPosition(launcher, 0));
+    new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartLaunchYellow(launcher, elevator, 17000));//long distance shot110 //-250 in the green zone.
+    new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, -265));//close shot//new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
+    new JoystickButton(Drivercontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, -265));
     //new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartCollectLastBall(intake, elevator, launcher));
     //sample comment
   
-    
+    /*
    new JoystickButton(Operatorcontroller, Button.kY.value).whenPressed(new ExtendClimber(climber));
     new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
     //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLaunc her(launcher, 1));
     new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ToggleIntakeArm(intake));
    // new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
-   // new JoystickButton(Operatorcontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, -300));//long distance shot
-   // new JoystickButton(Operatorcontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, 0));//close shot
+   */
     
   }
 
