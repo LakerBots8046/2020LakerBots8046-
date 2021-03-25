@@ -112,14 +112,15 @@ public class RobotContainer {
     //new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ExtendIntakeArm(intake));
     //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
 
-    //new JoystickButton(Drivercontroller,Button.kB.value).whenPressed(new SpinIntake(intake,0.0));//stop intake
-    new JoystickButton(Drivercontroller,Button.kBumperRight.value).whenPressed(new StopLaunch(elevator, launcher));// in vbus mode so it coasts to a stop
+    new JoystickButton(Drivercontroller,Button.kBumperRight.value).whenPressed(new SpinIntake(intake,0.0));//stop intake
+    //new JoystickButton(Drivercontroller,Button.kBumperRight.value).whenPressed(new StopLaunch(elevator, launcher));// in vbus mode so it coasts to a stop
     new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartCollectWithLED(intake, elevator,launcher,LED));
     //new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED, 17000));
     new JoystickButton(Drivercontroller, Button.kStart.value).whenPressed(new SmartLaunchLongRange(intake, elevator, launcher, LED));
-    new JoystickButton(Drivercontroller, Button.kA.value).whenPressed(new SetHoodPosition(launcher, 0));
+    new JoystickButton(Drivercontroller, Button.kA.value).whenPressed(new SmartLaunchGreen(launcher, elevator, 17000)); // normal range
     new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartLaunchYellow(launcher, elevator, 17000));//long distance shot110 //-250 in the green zone.
-    new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SetHoodPosition(launcher, -265));//close shot//new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
+    new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SmartLaunchBlue(launcher, elevator, 24000));// The range from blue area to target
+    //new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));
     new JoystickButton(Drivercontroller, Button.kB.value).whenPressed(new SetHoodPosition(launcher, -265));
     //new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartCollectLastBall(intake, elevator, launcher));
     //sample comment

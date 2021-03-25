@@ -9,7 +9,7 @@ import frc.robot.commands.Launcher.*;
 import frc.robot.subsystems.*;
 
 
-public class SmartLaunchYellow extends SequentialCommandGroup {
+public class SmartLaunchGreen extends SequentialCommandGroup {
   /**
    * Creates a new ComplexAuto.
    *
@@ -17,10 +17,10 @@ public class SmartLaunchYellow extends SequentialCommandGroup {
    * @param launcher The hatch subsystem this command will run on
    * @param elevator
    */
-  public SmartLaunchYellow(Launcher launcher, Elevator elevator, double elevatorSpeed) {
+  public SmartLaunchGreen(Launcher launcher, Elevator elevator, double elevatorSpeed) {
     addCommands(
-        new SetHoodPosition(launcher, -245), //Raise hood
-        new SetLauncherSpeed(launcher, 24000), //spins up the launcher in velocity mode ends when on target
+        new SetHoodPosition(launcher, 0), //Raise hood
+        new SetLauncherSpeed(launcher, 28046), //spins up the launcher in velocity mode ends when on target
         new WaitCommand(.5),// waits a small amount of time
         new emptyElevator(elevator,elevatorSpeed), //25000 drives the elevator in velocity mode
         new WaitCommand(4),// 3 waits long enough to empty the elevator
