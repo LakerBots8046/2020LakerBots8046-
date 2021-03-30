@@ -117,7 +117,7 @@ public class RobotContainer {
     new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartCollectWithLED(intake, elevator,launcher,LED));
     //new JoystickButton(Drivercontroller,Button.kBumperLeft.value).whenPressed(new SmartLaunchWithLED(intake, elevator, launcher,LED, 17000));
     new JoystickButton(Drivercontroller, Button.kStart.value).whenPressed(new SmartLaunchLongRange(intake, elevator, launcher, LED));
-    new JoystickButton(Drivercontroller, Button.kA.value).whenPressed(new SmartLaunchGreen(launcher, elevator, 17000)); // normal range
+    new JoystickButton(Drivercontroller, Button.kA.value).whenPressed(new SmartLaunchGreen(drivetrain,launcher, elevator, 17000)); // normal range
     new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartLaunchYellow(launcher, elevator, 17000));//long distance shot110 //-250 in the green zone.
     new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SmartLaunchBlue(launcher, elevator, 24000));// The range from blue area to target
     //new JoystickButton(Drivercontroller, Button.kX.value).whenPressed(new SpinIntake(intake,-0.3));

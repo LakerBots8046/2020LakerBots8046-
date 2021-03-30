@@ -2,6 +2,8 @@ package frc.robot.commands.CommandGroups;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import frc.robot.commands.AutodriveReverse;
+import frc.robot.commands.ResetEncoder;
 import frc.robot.commands.SpinIntake;
 import frc.robot.commands.Elevator.*;
 import frc.robot.commands.Launcher.*;
@@ -17,8 +19,10 @@ public class SmartLaunchGreen extends SequentialCommandGroup {
    * @param launcher The hatch subsystem this command will run on
    * @param elevator
    */
-  public SmartLaunchGreen(Launcher launcher, Elevator elevator, double elevatorSpeed) {
+  public SmartLaunchGreen(Drivetrain drivetrain, Launcher launcher, Elevator elevator, double elevatorSpeed) {
     addCommands(
+        new ResetEncoder(drivetrain),
+        new AutodriveReverse(drivetrain, 0.3, 0.0, -5.0),
         new SetHoodPosition(launcher, 0), //Raise hood
         new SetLauncherSpeed(launcher, 28046), //spins up the launcher in velocity mode ends when on target
         new WaitCommand(.5),// waits a small amount of time
