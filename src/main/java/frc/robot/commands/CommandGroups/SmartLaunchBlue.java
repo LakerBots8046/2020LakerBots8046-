@@ -19,8 +19,8 @@ public class SmartLaunchBlue extends SequentialCommandGroup {
    */
   public SmartLaunchBlue(Launcher launcher, Elevator elevator, double elevatorSpeed) {
     addCommands(
-        new SetHoodPosition(launcher, -285), //Raise hood
-        new SetLauncherSpeed(launcher, 28046), //spins up the launcher in velocity mode ends when on target
+        new SetHoodPosition(launcher, -340), //Raise hood sparta!!! 311
+        new SetLauncherSpeed(launcher, 30046), //spins up the launcher in velocity mode ends when on target
         new WaitCommand(.5),// waits a small amount of time
         new emptyElevator(elevator,elevatorSpeed), //25000 drives the elevator in velocity mode
         new WaitCommand(4),// 3 waits long enough to empty the elevator

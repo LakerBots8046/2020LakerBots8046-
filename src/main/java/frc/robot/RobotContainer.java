@@ -93,7 +93,7 @@ public class RobotContainer {
  // drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4)));
   drivetrain.setDefaultCommand(new JoystickDrive(drivetrain,()-> Drivercontroller.getRawAxis(1),()-> Drivercontroller.getRawAxis(4),()-> driver_LStickButton.get()));
   //launcher.setDefaultCommand(new tuneLauncher(launcher));
-  //launcher.setDefaultCommand(new tuneHood(launcher));// enable this if tuning the hood
+  launcher.setDefaultCommand(new tuneHood(launcher));// enable this if tuning the hood
   //elevator.setDefaultCommand(new tuneElevator(elevator));
 
   //------------------------Basic Functionallity Testing ------------------------//
@@ -125,14 +125,14 @@ public class RobotContainer {
     //new JoystickButton(Drivercontroller, Button.kY.value).whenPressed(new SmartCollectLastBall(intake, elevator, launcher));
     //sample comment
   
-    /*
+    
    new JoystickButton(Operatorcontroller, Button.kY.value).whenPressed(new ExtendClimber(climber));
     new JoystickButton(Operatorcontroller, Button.kA.value).whenPressed(new RetractClimber(climber));
     //new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new SpinLaunc her(launcher, 1));
     new JoystickButton(Operatorcontroller, Button.kBumperRight.value).whenPressed(new ToggleIntakeArm(intake));
    // new JoystickButton(Operatorcontroller, Button.kBumperLeft.value).whenPressed(new RetractIntakeArm(intake));
-   */
-    
+   
+    new JoystickButton(Operatorcontroller, Button.kStart.value).whenPressed(new ResetHoodEncoder(launcher));
   }
 
 

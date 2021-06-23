@@ -22,10 +22,10 @@ public class SmartLaunchGreen extends SequentialCommandGroup {
   public SmartLaunchGreen(Drivetrain drivetrain, Launcher launcher, Elevator elevator, double elevatorSpeed) {
     addCommands(
         new ResetEncoder(drivetrain),
-        new AutodriveReverse(drivetrain, 0.3, 0.0, -5.0),
-        new SetHoodPosition(launcher, 0), //Raise hood
-        new SetLauncherSpeed(launcher, 28046), //spins up the launcher in velocity mode ends when on target
-        new WaitCommand(.5),// waits a small amount of time
+        new SetLauncherSpeed(launcher, 28046),
+        new AutodriveReverse(drivetrain, 0.3, 0.0, -6.0),
+        new SetHoodPosition(launcher, -350), //Raise hood
+        new WaitCommand(1),// waits a small amount of time
         new emptyElevator(elevator,elevatorSpeed), //25000 drives the elevator in velocity mode
         new WaitCommand(4),// 3 waits long enough to empty the elevator
         new SetHoodPosition(launcher,0), //Brings the hood down

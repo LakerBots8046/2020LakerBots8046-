@@ -17,8 +17,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.revrobotics.*;
 import com.ctre.phoenix.motorcontrol.can.*;
+
+import com.revrobotics.*;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -49,6 +50,7 @@ public class Drivetrain extends SubsystemBase {
 
   public Drivetrain() {
 leftLead = new CANSparkMax(6,MotorType.kBrushless);
+
 leftfollow = new CANSparkMax(7,MotorType.kBrushless);
 rightLead = new CANSparkMax (5,MotorType.kBrushless);
 rightfollow = new CANSparkMax (8,MotorType.kBrushless);
@@ -77,11 +79,13 @@ rightLead.setOpenLoopRampRate(1.0);
 public void drive(double move, double rotate) {
  m_robotDrive.arcadeDrive(move, rotate,true);
  m_robotDrive2.arcadeDrive(move, rotate,true);
+ //m_robotDrive.curvatureDrive(xSpeed, zRotation, isQuickTurn);
+
  //System.out.println("drive method is running NOW" +move);
 }
   @Override
   public void periodic() {
-    System.out.println("Left Encoder Value" +getDriveDistance() );
+    //System.out.println("Left Encoder Value" +getDriveDistance() );
     /*
     SmartDashboard.putNumber("leftLeadCurrent", +leftLeadCurrent());
     SmartDashboard.putNumber("leftfollowCurrent", +leftFollowCurrent());

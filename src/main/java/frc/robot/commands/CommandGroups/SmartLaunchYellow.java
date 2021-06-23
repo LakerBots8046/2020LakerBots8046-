@@ -19,11 +19,13 @@ public class SmartLaunchYellow extends SequentialCommandGroup {
    */
   public SmartLaunchYellow(Launcher launcher, Elevator elevator, double elevatorSpeed) {
     addCommands(
-        new SetHoodPosition(launcher, -245), //Raise hood
-        new SetLauncherSpeed(launcher, 24000), //spins up the launcher in velocity mode ends when on target
+        new SetHoodPosition(launcher, -254), //Raise hood, cheesy poofs
+        new SetLauncherSpeed(launcher, 30000), //spins up the launcher in velocity mode ends when on target
         new WaitCommand(.5),// waits a small amount of time
         new emptyElevator(elevator,elevatorSpeed), //25000 drives the elevator in velocity mode
+        
         new WaitCommand(4),// 3 waits long enough to empty the elevator
+      
         new SetHoodPosition(launcher,0), //Brings the hood down
         new SpinElevator(elevator, 0),// stops the elevator in vBus Mode
         new SpinLauncher(launcher,0));//stops the launcher in Vbus mode

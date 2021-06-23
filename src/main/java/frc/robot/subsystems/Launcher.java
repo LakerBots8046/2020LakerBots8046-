@@ -73,7 +73,7 @@ public class Launcher extends SubsystemBase {
 
     // we still need to tune these once we get the system operational
     launcherPivotingHood.config_kF(0, .7, 30);//.548
-    launcherPivotingHood.config_kP(0, 1.8, 30);// upped from 0.05 during Granite State Event
+    launcherPivotingHood.config_kP(0, 2.8, 30);// upped from 0.05 during Granite State Event
     launcherPivotingHood.config_kI(0, 0, 30);
     launcherPivotingHood.config_kD(0, 0, 30);
     launcherPivotingHood.configClosedloopRamp(.25);
@@ -93,7 +93,7 @@ public class Launcher extends SubsystemBase {
   public void tunePivotingHood() {
 
     //Get gamepad axis
-    double leftYstick = -1 * _joy.getY();
+    double leftYstick = -0.3 * _joy.getY();
     
     //Get Talon/Victor's currst output percentage
     double motorOutput = launcherPivotingHood.getMotorOutputPercent();
@@ -257,14 +257,16 @@ public boolean isLauncherSpeed(double target){
 
 
 public boolean launcherIsAtSpeed(){
-  if (launcherLead.getClosedLoopError()< 1000) return true;
+  if (launcherLead.getClosedLoopError()< 4000) return true;
   else return false;
 }
+//public void resetHoodEncoder(){}
+
 
  @Override
   public void periodic() {
    
-//System.out.println("Hood Position" +launcherPivotingHood.getSelectedSensorPosition());
+System.out.println("Hood Position" +launcherPivotingHood.getSelectedSensorPosition());
  //   SmartDashboard.putNumber("shooter speed", +launcherLead.getSelectedSensorVelocity());
     // This method will be called once per scheduler run
   }
